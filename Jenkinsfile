@@ -41,6 +41,8 @@ stages{
             container('node18'){
                 script{
                     sh script: 'npm i'
+                    sh script: 'ls -al'
+                    sh script: 'pwd'
                 }
 
             }
