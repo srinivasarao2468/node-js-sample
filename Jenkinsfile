@@ -19,6 +19,14 @@ pipeline {
               - sleep
               args:
               - 99d
+              volumeMounts:
+              - name: docker-run
+                mountPath: /var/run
+            volumes:
+            - name: docker-run
+              hostPath:
+                path: /var/run
+                type: Directory
 '''    
     }
    }
