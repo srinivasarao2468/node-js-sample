@@ -34,7 +34,7 @@ pipeline {
 stages{
     stage('test'){
         steps{
-            container('kubectl'){
+            container('node16'){
                 script{
                     CURRENT_CONTAINER=sh(script: 'node --version',
                                         returnStdout: true
