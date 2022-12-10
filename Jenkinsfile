@@ -36,10 +36,7 @@ stages{
         steps{
             container('node16'){
                 script{
-                    CURRENT_CONTAINER=sh(script: 'node --version',
-                                        returnStdout: true
-                                        ).trim()
-                    echo "Exec container ${CURRENT_CONTAINER}"
+                    sh(script: 'node --version', returnStdout: true).trim()
                 }
 
             }
@@ -47,7 +44,7 @@ stages{
     }
     stage('test1'){
         steps{
-            echo "CURRENT_CONTAINER is ${CURRENT_CONTAINER}"
+            sh(script: 'hostname', returnStdout: true).trim()
         }
     }
 }
