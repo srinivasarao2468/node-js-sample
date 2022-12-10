@@ -25,7 +25,7 @@ pipeline {
 stages{
     stage('test'){
         steps{
-            sh "sleep 120"
+           echo "Hello"
         }
     }
 }
