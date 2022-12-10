@@ -8,32 +8,10 @@ pipeline {
         metadata:
             name: jenkins-agent
         spec:
-            serviceAccountName: jenkins
+            serviceAccountName: jenkins-agent
             containers:
             - name: node
               image: node:16-alpine
-              command:
-              - sleep
-              args:
-              - 99d
-            - name: docker
-              image: docker
-              resources:
-                limits:
-                    memory: "512Mi"
-                    cpu: "500m"
-                requests:
-                    memory: "256Mi"
-                    cpu: "250m"
-                command:
-                - sleep
-                args:
-                - 99d
-                volumeMounts:
-                - name: docker-run
-                  mountPath: /var/run
-            - name: helm
-              image: alpine/helm
               command:
               - sleep
               args:
