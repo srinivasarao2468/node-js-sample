@@ -36,7 +36,7 @@ stages{
         steps{
             container('node16'){
                 script{
-                    sh returnStdout: true, script: 'node --version'
+                    sh returnStdout: true, script: 'npm install'
                 }
 
             }
