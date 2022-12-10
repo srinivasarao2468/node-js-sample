@@ -40,7 +40,8 @@ stages{
         steps{
             container('node18'){
                 script{
-                    sh script: 'npm i'
+                    sh script: "npm i -g pnpm@7.11"
+                    sh script: 'pnpm i'
                     sh script: 'ls -al'
                     sh script: 'pwd'
                 }
