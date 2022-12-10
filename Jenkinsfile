@@ -36,7 +36,7 @@ stages{
         steps{
             container('kubectl'){
                 script{
-                    CURRENT_CONTAINER=sh(script: 'kubectl get pods -n jenkins -l jenkins=slave -o jsonpath="{.items[*].spec.containers[0].name}"',
+                    CURRENT_CONTAINER=sh(script: 'node --version',
                                         returnStdout: true
                                         ).trim()
                     echo "Exec container ${CURRENT_CONTAINER}"
@@ -47,6 +47,7 @@ stages{
     }
     stage('test1'){
         steps{
+            sh()
             echo "CURRENT_CONTAINER is ${CURRENT_CONTAINER}"
         }
     }
