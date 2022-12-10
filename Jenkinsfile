@@ -7,7 +7,7 @@ pipeline {
         kind: Pod
         spec:
             containers:
-            - name: maven
+            - name: node16
               image: node:16-alpine
               command:
               - sleep
@@ -33,7 +33,9 @@ pipeline {
 stages{
     stage('test'){
         steps{
-           sh "cat /etc/shells"
+            container('node'){
+                sh "cat /etc/shells"
+            }
         }
     }
 }
