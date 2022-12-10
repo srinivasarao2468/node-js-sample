@@ -2,8 +2,8 @@ pipeline {
   agent {
     kubernetes {
         defaultContainer 'node'
-        yaml: '''
-    apiVersion: v1
+        yaml '''
+        apiVersion: v1
     kind: Pod
     spec:
       containers:
