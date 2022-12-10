@@ -36,7 +36,7 @@ stages{
         steps{
             container('node16'){
                 script{
-                    sh(script: 'node --version', returnStdout: true).trim()
+                    sh returnStdout: true, script: 'node --version'
                 }
 
             }
@@ -46,7 +46,7 @@ stages{
         steps{
         container('node16'){
             script{
-                sh(script: 'hostname', returnStdout: true).trim()
+                sh returnStdout: true, script: 'node --version'
             }
         }
         }
