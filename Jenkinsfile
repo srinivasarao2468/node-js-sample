@@ -47,7 +47,6 @@ stages{
     }
     stage('test1'){
         steps{
-            sh()
             echo "CURRENT_CONTAINER is ${CURRENT_CONTAINER}"
         }
     }
