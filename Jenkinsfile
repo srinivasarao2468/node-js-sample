@@ -44,5 +44,10 @@ stages{
             }
         }
     }
+    stage('test1'){
+        steps{
+            sh 'cat /etc/shells'
+        }
+    }
 }
 }
