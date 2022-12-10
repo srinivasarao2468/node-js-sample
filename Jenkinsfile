@@ -3,7 +3,7 @@ pipeline {
     kubernetes {
         defaultContainer 'node'
         yaml '''
-        apiversion: v1
+        apiVersion: v1
         kind: pod
         metadata:
           name: jenkins-agent
