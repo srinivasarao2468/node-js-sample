@@ -6,34 +6,43 @@ pipeline {
         apiVersion: v1
         kind: pod
         metadata:
-          name: jenkins-agent
+            name: jenkins-agent
         spec:
-          serviceAccountName: jenkins
-          containers:
-          - name: node
-            image: node:16-alpine
-            command:
-          - sleep
-          args:
-          - 99d
-         - name: docker
-           image: docker
-           resources:
-             limits:
-               memory: "512Mi"
-               cpu: "500m"
-             requests:
-               memory: "256Mi"
-               cpu: "250m"
-            command:
-            - sleep
-            args:
-            - 99d
-        volumes:
-        - name: docker-run
-          hostpath:
-            path: /var/run
-            type: Directory
+            serviceAccountName: jenkins
+            containers:
+            - name: node
+              image: node:16-alpine
+              command:
+              - sleep
+              args:
+              - 99d
+            - name: docker
+              image: docker
+              resources:
+                limits:
+                    memory: "512Mi"
+                    cpu: "500m"
+                requests:
+                    memory: "256Mi"
+                    cpu: "250m"
+                command:
+                - sleep
+                args:
+                - 99d
+                volumeMounts:
+                - name: docker-run
+                  mountPath: /var/run
+            - name: helm
+              image: alpine/helm
+              command:
+              - sleep
+              args:
+              - 99d
+            volumes:
+            - name: docker-run
+              hostpath:
+                path: /var/run
+                type: Directory
     '''           
     }
    }
@@ -42,6 +51,7 @@ stages{
         steps{
             sh "node --version"
             sh "docker --version"
+            sh "helm --version"
         }
     }
 }
