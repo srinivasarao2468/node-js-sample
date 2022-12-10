@@ -46,7 +46,10 @@ stages{
     }
     stage('test1'){
         steps{
+        container('node'){
             sh 'cat /etc/shells'
+            }
+
         }
     }
 }
