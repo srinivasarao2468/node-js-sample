@@ -13,8 +13,8 @@ pipeline {
               - sleep
               args:
               - 99d
-            - name: docker
-              image: docker
+            - name: kubectl
+              image: gcr.io/cloud-builders/kubectl
               command:
               - sleep
               args:
@@ -33,12 +33,12 @@ pipeline {
 stages{
     stage('test'){
         steps{
-            container('node'){
+            container('kubectl'){
                 script{
-                    def browsers = ['chrome', 'firefox']
-                    for (int i = 0; i < browsers.size(); ++i) {
-                        echo "Testing the ${browsers[i]} browser"
-                    }
+                    CURRENT_CONTAINER=sh(script: 'kubectl get pods -n jenkins -l jenkins=slave -o jsonpath="{.items[*].spec.containers[0].name}"',
+                                        returnStdout: true
+                                        ).trim()
+                    echo "Exec container ${CURRENT_CONTAINER}"
                 }
 
             }
@@ -46,10 +46,7 @@ stages{
     }
     stage('test1'){
         steps{
-        container('node'){
-            sh 'cat /etc/shells'
-            }
-
+            echo "CURRENT_CONTAINER is ${CURRENT_CONTAINER}"
         }
     }
 }
