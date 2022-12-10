@@ -33,7 +33,7 @@ pipeline {
 stages{
     stage('test'){
         steps{
-           echo "Hello"
+           sh "echo Hello"
         }
     }
 }
