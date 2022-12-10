@@ -36,7 +36,7 @@ stages{
         steps{
             container('node18'){
                 script{
-                    sh script: 'npm install'
+                    sh script: 'npm i'
                 }
 
             }
@@ -46,7 +46,7 @@ stages{
         steps{
         container('node18'){
             script{
-                sh script: 'npm build'
+                sh script: 'npm install'
             }
         }
         }
