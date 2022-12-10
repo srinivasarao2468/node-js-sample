@@ -6,6 +6,8 @@ pipeline {
         apiVersion: v1
         kind: Pod
         spec:
+            securityContext:
+                fsGroup: 1000
             serviceAccountName: jenkins-agent
             containers:
             - name: node18
@@ -28,11 +30,8 @@ pipeline {
               hostPath:
                 path: /var/run
                 type: Directory
-            workspaceVolume: 
-                dynamicPVC:
-                    accessModes: 'ReadWriteOnce' 
-                    requestsSize: "20Gi"
-'''    
+''' 
+workspaceVolume dynamicPVC(accessModes: 'ReadWriteOnce', requestsSize: "10Gi")
     }
    }
 stages{
