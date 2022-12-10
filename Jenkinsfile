@@ -6,6 +6,7 @@ pipeline {
         apiVersion: v1
         kind: Pod
         spec:
+            serviceAccountName: jenkins-agent
             containers:
             - name: node16
               image: node:16-alpine
