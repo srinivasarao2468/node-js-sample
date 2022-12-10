@@ -25,8 +25,7 @@ pipeline {
 stages{
     stage('test'){
         steps{
-            sh "node --version"
-            sh "docker --version"
+            sh "sleep 120"
         }
     }
 }
