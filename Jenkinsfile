@@ -28,7 +28,10 @@ pipeline {
               hostPath:
                 path: /var/run
                 type: Directory
-            workspaceVolume: dynamicPVC(accessModes: 'ReadWriteOnce', requestsSize: "20Gi")
+            workspaceVolume: 
+                dynamicPVC:
+                    accessModes: 'ReadWriteOnce' 
+                    requestsSize: "20Gi"
 '''    
     }
    }
