@@ -44,7 +44,9 @@ stages{
     }
     stage('test1'){
         steps{
-            sh(script: 'hostname', returnStdout: true).trim()
+            script{
+                sh(script: 'hostname', returnStdout: true).trim()
+            }
         }
     }
 }
