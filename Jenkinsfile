@@ -53,7 +53,7 @@ stages{
         steps{
         container('node18'){
             script{
-                sh script: 'npm install'
+                sh script: 'sleep 300'
             }
         }
         }
