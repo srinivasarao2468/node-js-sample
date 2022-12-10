@@ -8,8 +8,8 @@ pipeline {
         spec:
             serviceAccountName: jenkins-agent
             containers:
-            - name: node16
-              image: node:16-alpine
+            - name: node18
+              image: node:18-alpine
               command:
               - sleep
               args:
@@ -34,7 +34,7 @@ pipeline {
 stages{
     stage('test'){
         steps{
-            container('node16'){
+            container('node18'){
                 script{
                     sh returnStdout: true, script: 'npm install'
                 }
@@ -44,9 +44,9 @@ stages{
     }
     stage('test1'){
         steps{
-        container('node16'){
+        container('node18'){
             script{
-                sh returnStdout: true, script: 'node --version'
+                sh returnStdout: true, script: 'npm build'
             }
         }
         }
