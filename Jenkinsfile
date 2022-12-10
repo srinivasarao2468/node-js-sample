@@ -36,7 +36,7 @@ stages{
         steps{
             container('node18'){
                 script{
-                    sh returnStdout: true, script: 'npm install'
+                    sh script: 'npm install'
                 }
 
             }
@@ -46,7 +46,7 @@ stages{
         steps{
         container('node18'){
             script{
-                sh returnStdout: true, script: 'npm build'
+                sh script: 'npm build'
             }
         }
         }
