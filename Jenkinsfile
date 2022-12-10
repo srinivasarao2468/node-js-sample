@@ -33,7 +33,7 @@ pipeline {
 stages{
     stage('test'){
         steps{
-           sh "echo Hello"
+           sh "cat /etc/shells"
         }
     }
 }
