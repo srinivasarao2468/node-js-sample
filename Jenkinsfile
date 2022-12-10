@@ -44,9 +44,11 @@ stages{
     }
     stage('test1'){
         steps{
+        container('node16'){
             script{
                 sh(script: 'hostname', returnStdout: true).trim()
             }
+        }
         }
     }
 }
