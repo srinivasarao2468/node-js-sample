@@ -8,13 +8,13 @@ pipeline {
         spec:
             containers:
             - name: maven
-              image: maven:3.8.1-jdk-8
+              image: node:16-alpine
               command:
               - sleep
               args:
               - 99d
-            - name: golang
-              image: golang:1.16.5
+            - name: docker
+              image: docker
               command:
               - sleep
               args:
@@ -25,7 +25,8 @@ pipeline {
 stages{
     stage('test'){
         steps{
-            echo "Hello"
+            sh "node --version"
+            sh "docker --version"
         }
     }
 }
