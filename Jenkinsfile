@@ -61,7 +61,7 @@ stages{
         steps{
         container('node18'){
             script{
-                sh script: 'sleep 60'
+                sh script: 'sleep 300'
             }
         }
         }
