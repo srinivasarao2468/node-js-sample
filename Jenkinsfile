@@ -31,8 +31,8 @@ pipeline {
                 path: /var/run
                 type: Directory
 ''' 
-//workspaceVolume dynamicPVC(accessModes: 'ReadWriteOnce', requestsSize: "10Gi")
-workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', readOnly: false)
+workspaceVolume dynamicPVC(accessModes: 'ReadWriteOnce', requestsSize: "10Gi")
+// workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', readOnly: false)
     }
    }
 stages{
