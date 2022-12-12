@@ -14,12 +14,20 @@ pipeline {
             containers:
             - name: node18
               image: node:18-alpine
+              securityContext:
+                runAsUser: 1000
+                runAsGroup: 1000
+                fsGroup: 1000
               command:
               - sleep
               args:
               - 99d
             - name: kubectl
               image: gcr.io/cloud-builders/kubectl
+              securityContext:
+                runAsUser: 1000
+                runAsGroup: 1000
+                fsGroup: 1000
               command:
               - sleep
               args:
