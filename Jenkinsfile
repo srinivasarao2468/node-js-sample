@@ -12,22 +12,14 @@ pipeline {
                 fsGroup: 1000
             serviceAccountName: jenkins-agent
             containers:
-            - name: node18
+            - name: node
               image: node:18-alpine
-              securityContext:
-                runAsUser: 1000
-                runAsGroup: 1000
-                fsGroup: 1000
               command:
               - sleep
               args:
               - 99d
             - name: kubectl
               image: gcr.io/cloud-builders/kubectl
-              securityContext:
-                runAsUser: 1000
-                runAsGroup: 1000
-                fsGroup: 1000
               command:
               - sleep
               args:
@@ -42,7 +34,7 @@ pipeline {
                 type: Directory
 ''' 
 //workspaceVolume dynamicPVC(accessModes: 'ReadWriteOnce', requestsSize: "10Gi")
-workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', accessModes: 'ReadWriteOnce', readOnly: false)
+workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', readOnly: false)
     }
    }
 stages{
