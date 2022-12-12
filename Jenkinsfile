@@ -7,7 +7,9 @@ pipeline {
         kind: Pod
         spec:
             securityContext:
-                fsGroup: 1000
+                runAsUser: 1000
+                runAsGroup: 3000
+                fsGroup: 2000
             serviceAccountName: jenkins-agent
             containers:
             - name: node18
