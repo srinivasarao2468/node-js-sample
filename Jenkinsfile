@@ -7,17 +7,11 @@ pipeline {
         kind: Pod
         spec:
             securityContext:
-                runAsUser: 1000
-                runAsGroup: 3000
-                fsGroup: 2000
+                fsGroup: 1000
             serviceAccountName: jenkins-agent
             containers:
             - name: node18
               image: node:18-alpine
-              securityContext:
-                runAsUser: 1000
-                runAsGroup: 3000
-                fsGroup: 2000
               command:
               - sleep
               args:
