@@ -16,6 +16,9 @@ pipeline {
               - sleep
               args:
               - 99d
+              volumeMounts:
+              - name: jenkins-slave-pvc
+                mountPath: /mnt/data/
             - name: kubectl
               image: gcr.io/cloud-builders/kubectl
               command:
@@ -58,7 +61,7 @@ stages{
         steps{
         container('node18'){
             script{
-                sh script: 'sleep 300'
+                sh script: 'sleep 60'
             }
         }
         }
