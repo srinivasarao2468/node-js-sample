@@ -18,7 +18,7 @@ pipeline {
               - 99d
               volumeMounts:
               - name: jenkins-slave-pvc
-                mountPath: /mnt/data/
+                mountPath: /home/jenkins/agent
             - name: kubectl
               image: gcr.io/cloud-builders/kubectl
               command:
@@ -29,7 +29,7 @@ pipeline {
               - name: docker-run
                 mountPath: /var/run
               - name: jenkins-slave-pvc
-                mountPath: /mnt/data/
+                mountPath: /home/jenkins/agent
             volumes:
             - name: docker-run
               hostPath:
