@@ -10,6 +10,7 @@ pipeline {
                 runAsUser: 1000
                 runAsGroup: 3000
                 fsGroup: 2000
+                fsGroupChangePolicy: "OnRootMismatch"
             serviceAccountName: jenkins-agent
             containers:
             - name: node18
