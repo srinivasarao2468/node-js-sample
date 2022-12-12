@@ -7,8 +7,6 @@ pipeline {
         kind: Pod
         spec:
             securityContext:
-                runAsUser: 1000
-                runAsGroup: 1000
                 fsGroup: 1000
             serviceAccountName: jenkins-agent
             containers:
@@ -40,7 +38,7 @@ workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-p
 stages{
     stage('test'){
         steps{
-            container('node18'){
+            container('node'){
                 script{
                     sh script: "npm i -g pnpm@7.11"
                     sh script: 'pnpm i'
