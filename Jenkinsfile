@@ -31,14 +31,19 @@ pipeline {
               volumeMounts:
               - name: docker-run
                 mountPath: /var/run
+              - name: jenkins-slave-pvc
+                mountPath: /mnt/data/
             volumes:
             - name: docker-run
               hostPath:
                 path: /var/run
                 type: Directory
+            - name: jenkins-slave-pvc
+              persistentVolumeClaim:
+                claimName: jenkins-slave-pvc
 ''' 
 //workspaceVolume dynamicPVC(accessModes: 'ReadWriteOnce', requestsSize: "10Gi")
-workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', readOnly: false)
+// workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', readOnly: false)
     }
    }
 stages{
