@@ -10,15 +10,15 @@ pipeline {
                 fsGroup: 1000
             serviceAccountName: jenkins-agent
             containers:
-            - name: node18
+            - name: node
               image: node:18-alpine
               command:
               - sleep
               args:
               - 99d
-              volumeMounts:
-              - name: jenkins-slave-pvc
-                mountPath: /home/jenkins/agent
+            //   volumeMounts:
+            //   - name: jenkins-slave-pvc
+            //     mountPath: /home/jenkins/agent
             - name: kubectl
               image: gcr.io/cloud-builders/kubectl
               command:
@@ -28,19 +28,19 @@ pipeline {
               volumeMounts:
               - name: docker-run
                 mountPath: /var/run
-              - name: jenkins-slave-pvc
-                mountPath: /home/jenkins/agent
+            //   - name: jenkins-slave-pvc
+            //     mountPath: /home/jenkins/agent
             volumes:
             - name: docker-run
               hostPath:
                 path: /var/run
                 type: Directory
-            - name: jenkins-slave-pvc
-              persistentVolumeClaim:
-                claimName: jenkins-slave-pvc
+            // - name: jenkins-slave-pvc
+            //   persistentVolumeClaim:
+            //     claimName: jenkins-slave-pvc
 ''' 
 //workspaceVolume dynamicPVC(accessModes: 'ReadWriteOnce', requestsSize: "10Gi")
-// workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', readOnly: false)
+workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'jenkins-slave-pvc', readOnly: false)
     }
    }
 stages{
