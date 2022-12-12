@@ -10,11 +10,14 @@ pipeline {
                 runAsUser: 1000
                 runAsGroup: 3000
                 fsGroup: 2000
-                fsGroupChangePolicy: "OnRootMismatch"
             serviceAccountName: jenkins-agent
             containers:
             - name: node18
               image: node:18-alpine
+              securityContext:
+                runAsUser: 1000
+                runAsGroup: 3000
+                fsGroup: 2000
               command:
               - sleep
               args:
