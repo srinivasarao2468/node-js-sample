@@ -51,9 +51,9 @@ stages{
     }
     stage('test1'){
         steps{
-        container('node18'){
+        container('node'){
             script{
-                sh script: 'sleep 300'
+                sh script: 'sleep 60'
             }
         }
         }
